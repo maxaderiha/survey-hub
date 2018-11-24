@@ -1,0 +1,28 @@
+{
+  "name": "emaily-server",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "11.2.0",
+    "npm": "6.4.1"
+  },
+  "scripts": {
+    "babel-node-debug": "babel-node --inspect src/index",
+    "babel-node": "babel-node src/index",
+    "start": "cross-env NODE_PATH=./src npm run babel-node",
+    "dev": "cross-env NODE_PATH=./src nodemon --exec npm run babel-node-debug"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.8.0",
+    "nodemon": "^1.18.6"
+  }
+}
