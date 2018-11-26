@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
-import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from 'config/keys';
+import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from 'config';
 
 const User = mongoose.model('users');
 

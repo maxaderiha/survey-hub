@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import passport from 'passport';
 
-import { MONGO_DB_URI } from 'config/keys';
+import { MONGO_DB_URI } from 'config';
 import 'models/User';
 import cookieSession from 'services/cookieSession'; 
 import 'services/passport';
