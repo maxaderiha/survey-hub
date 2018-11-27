@@ -1,5 +1,5 @@
 {
-  "name": "emaily-server",
+  "name": "survey-hub",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
@@ -8,10 +8,12 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "babel-node-debug": "babel-node --inspect src/index",
-    "babel-node": "babel-node src/index",
-    "start": "cross-env NODE_PATH=./src npm run babel-node",
-    "dev": "cross-env NODE_PATH=./src nodemon --exec npm run babel-node-debug"
+    "babel-node": "babel-node app/index",
+    "babel-node-debug": "babel-node --inspect app/index",
+    "client": "npm run start --prefix app/client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cross-env NODE_PATH=./app nodemon --ignore app/client/* --exec npm run babel-node-debug",
+    "start": "cross-env NODE_PATH=./app npm run babel-node"
   },
   "author": "",
   "license": "ISC",
@@ -24,10 +26,17 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^9.0.0",
     "babel-preset-env": "^1.7.0",
+    "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
     "dotenv": "^6.1.0",
-    "eslint": "^5.8.0",
+    "eslint": "^5.9.0",
+    "eslint-config-react-app": "^3.0.5",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "nodemon": "^1.18.6"
   }
 }
