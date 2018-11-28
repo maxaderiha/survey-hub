@@ -1,8 +1,9 @@
+import * as Immutable from 'immutable';
 import { ActionTypes } from './constants';
 
-const appInitialState = {
+const appInitialState = Immutable.Map({
   currentValue: 0,
-};
+});
 
 const appReducer = (state = appInitialState, action) => {
   switch (action.type) {
@@ -12,9 +13,7 @@ const appReducer = (state = appInitialState, action) => {
 };
 
 function incrementCounter(state, action) {
-  return {
-    currentValue: ++state.currentValue,
-  };
+  return state.set('currentValue', state.get('currentValue') + 1);
 }
 
 export default appReducer;
