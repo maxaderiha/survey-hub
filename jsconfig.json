@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "./app"
+    "baseUrl": "./server"
   },
   "exclude": [
     "node_modules",
-    "app/client"
+    "client"
   ]
 }

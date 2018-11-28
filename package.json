@@ -8,12 +8,12 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "babel-node": "babel-node app/index",
-    "babel-node-debug": "babel-node --inspect app/index",
-    "client": "npm run start --prefix app/client",
+    "babel-node": "babel-node server/index",
+    "babel-node-debug": "babel-node --inspect server/index",
+    "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cross-env NODE_PATH=./app nodemon --ignore app/client/* --exec npm run babel-node-debug",
-    "start": "cross-env NODE_PATH=./app npm run babel-node"
+    "server": "cross-env NODE_PATH=./server nodemon --ignore client/* --exec npm run babel-node-debug",
+    "start": "cross-env NODE_PATH=./server npm run babel-node"
   },
   "author": "",
   "license": "ISC",
