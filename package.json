@@ -8,12 +8,11 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "babel-node": "babel-node server/index",
-    "babel-node-debug": "babel-node --inspect server/index",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cross-env NODE_PATH=./server nodemon --ignore client/* --exec npm run babel-node-debug",
-    "start": "cross-env NODE_PATH=./server npm run babel-node"
+    "build": "babel server --out-dir server/dist --ignore server/dist",
+    "dev": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "start": "npm run build && node server/dist/index",
+    "start:client": "npm run start --prefix client",
+    "start:server": "nodemon --ignore client/* --exec babel-node --inspect server/index"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +26,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^9.0.0",
+    "babel-plugin-module-resolver": "^3.1.1",
     "babel-preset-env": "^1.7.0",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
