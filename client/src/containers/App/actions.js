@@ -1,5 +1,12 @@
 import { ActionTypes } from './constants';
 
-export const incrementCounter = () => ({
-  type: ActionTypes.INCREMENT_COUNTER,
+export const fetchUser = () => ({
+  type: ActionTypes.FETCH_USER,
+});
+
+export const createUser = (user) => ({
+  type: ActionTypes.CREATE_USER,
+  payload: {
+    user,
+  },
 });

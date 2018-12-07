@@ -1,0 +1,18 @@
+.navbar-wrapper {
+  display: flex;
+  float: 0 0 auto;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo {
+  padding-left: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logo > a.logo-link, .logo > a.logo-link:hover {
+  color: inherit;
+  text-decoration: none;
+}

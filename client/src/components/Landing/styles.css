@@ -1,0 +1,50 @@
+.landing {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+
+}
+
+.slogan-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 50px;
+  flex: 1 0 auto;
+  background-image: url('../../common/assets/slogan-background.jpg');
+  background-position: center;
+  background-size: cover;
+  z-index: 0;
+}
+
+.slogan-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: -1;
+}
+
+.slogan-titles-container {
+  align-self: center;
+}
+
+.slogan-title {
+  margin: 0;
+  max-width: 871px;
+  color: #ffffff;
+  font-size: 100px;
+  line-height: 95px;
+}
+
+.slogan-subtitle {
+  margin: 0;
+  margin-top: 100px;
+  max-width: 1200px;
+  font-size: 60px;
+  font-weight: 100;
+}

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^3.9.0",
+    "@blueprintjs/icons": "^3.3.0",
+    "axios": "^0.18.0",
     "connected-react-router": "^5.0.1",
     "http-proxy-middleware": "^0.19.1",
     "immutable": "^4.0.0-rc.12",
@@ -13,7 +16,8 @@
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
     "redux-immutable": "^4.0.0",
-    "redux-saga": "^0.16.2"
+    "redux-saga": "^0.16.2",
+    "reselect": "^4.0.0"
   },
   "scripts": {
     "build": "cross-env NODE_PATH=./src react-scripts build",
