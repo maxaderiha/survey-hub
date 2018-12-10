@@ -6,9 +6,11 @@ import {
   Classes,
   Navbar,
   NavbarGroup,
+  NavbarDivider,
   NavbarHeading
 } from '@blueprintjs/core';
 
+import Payment from 'components/Payment';
 import './styles.css';
 
 class Header extends React.Component {
@@ -21,37 +23,63 @@ class Header extends React.Component {
   }
 
   render() {
-    const { user, isUserLoading, location: { pathname } } = this.props;
+    const { user/*, location: { pathname }*/ } = this.props;
     const isLoggedIn = !!user;
-    const [icon, text, logoLink] = isLoggedIn ? ['log-out', 'Log Out', '/surveys'] : ['log-in', 'Log In with Google', '/'];
-    const shouldReplaceHistory = pathname === '/';
+    const logoLink = isLoggedIn ? '/surveys' : '/';
+    // const shouldReplaceHistory = pathname === '/';
 
     return (
       <Navbar>
         <div className="navbar-wrapper">
           <NavbarGroup align={Alignment.LEFT}>
             <NavbarHeading className="logo no-select">
-              <Link 
+              <Link
                 className="logo-link"
-                replace={shouldReplaceHistory}
+                // replace={shouldReplaceHistory}
                 to={logoLink}
               >
                 SurveyHub
-              </Link> 
+              </Link>
             </NavbarHeading>
           </NavbarGroup>
           <NavbarGroup align={Alignment.RIGHT}>
-            <Button
-              className={Classes.MINIMAL}
-              icon={icon}
-              text={text}
-              loading={isUserLoading}
-              onClick={isLoggedIn ? this.logOut : this.logIn}
-            />
+            {this.renderButtons()}
           </NavbarGroup>
         </div>
       </Navbar>
     );
+  }
+
+  renderButtons = () => {
+    const { user, isUserLoading } = this.props;
+    const isLoggedIn = !!user;
+
+
+    if (isLoggedIn) {
+      return (
+        <React.Fragment>
+          <Payment />
+          <NavbarDivider />
+          <Button
+            className={Classes.MINIMAL}
+            icon={'log-out'}
+            text={'Log Out'}
+            loading={isUserLoading}
+            onClick={this.logOut}
+          />
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <Button
+          className={Classes.MINIMAL}
+          icon={'log-in'}
+          text={'Log In with Google'}
+          loading={isUserLoading}
+          onClick={this.logIn}
+        />
+      );
+    }
   }
 
   logIn = () => {

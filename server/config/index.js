@@ -5,8 +5,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export const {
+  COOKIE_KEY,
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
   MONGO_DB_URI,
-  COOKIE_KEY,
+  STRIPE_PUBLISHABLE_KEY,
+  STRIPE_SECRET_KEY,
 } = process.env;
