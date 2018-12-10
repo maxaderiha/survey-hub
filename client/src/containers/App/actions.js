@@ -4,8 +4,8 @@ export const fetchUser = () => ({
   type: ActionTypes.FETCH_USER,
 });
 
-export const createUser = (user) => ({
-  type: ActionTypes.CREATE_USER,
+export const updateUser = user => ({
+  type: ActionTypes.UPDATE_USER,
   payload: {
     user,
   },

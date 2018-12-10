@@ -10,7 +10,7 @@ import {
   NavbarHeading
 } from '@blueprintjs/core';
 
-import Payment from 'components/Payment';
+import Payment from 'containers/Payment';
 import './styles.css';
 
 class Header extends React.Component {
