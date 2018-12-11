@@ -6,7 +6,9 @@ import { Payment } from 'common/constants';
 
 export default class TakeMoney extends React.Component {
   render() {
-    const { credits } = this.props;
+    const { user } = this.props;
+    const credits = user.get('credits');
+    const email = user.getIn(['emails', '0', 'value']);
 
     return (
       <StripeCheckout
@@ -16,6 +18,7 @@ export default class TakeMoney extends React.Component {
         description={'Five dollars for five credits'}
         token={this.handleToken}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}
+        email={email}
       >
         <Button
           className={Classes.MINIMAL}

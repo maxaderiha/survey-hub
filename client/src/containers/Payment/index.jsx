@@ -2,11 +2,11 @@ import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 
 import Payment from 'components/Payment';
-import { credits } from 'containers/App/selectors';
+import { user } from 'containers/App/selectors';
 import { savePaymentToken } from './actions';
 
 const mapStateToProps = createStructuredSelector({
-  credits,
+  user,
 });
 
 const mapDispatchToProps = {
