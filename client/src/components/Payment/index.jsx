@@ -6,18 +6,21 @@ import { Payment } from 'common/constants';
 
 export default class TakeMoney extends React.Component {
   render() {
+    const { credits } = this.props;
+
     return (
       <StripeCheckout
         amount={Payment.AMOUNT}
         currency={Payment.CURRENCY}
         name={'SurveyHub'}
-        description={'5$ for 5 survey credits'}
+        description={'Five dollars for five credits'}
         token={this.handleToken}
-        stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
+        stripeKey={process.env.REACT_APP_STRIPE_KEY}
       >
         <Button
           className={Classes.MINIMAL}
-          text={'Add credits'}
+          text = {`Credits: ${credits}`}
+          icon={'plus'}
         />
       </StripeCheckout>
     );

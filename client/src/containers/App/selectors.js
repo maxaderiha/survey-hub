@@ -13,3 +13,7 @@ export const isUserLoading = createSelector(
 export const isLoggedIn = createSelector(
   [user], user => !!user,
 );
+
+export const credits = createSelector(
+  [user], user => user.get('credits'),
+);

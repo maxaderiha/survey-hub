@@ -30,11 +30,11 @@ class Header extends React.Component {
 
     return (
       <Navbar>
-        <div className="navbar-wrapper">
+        <div className='navbar-wrapper'>
           <NavbarGroup align={Alignment.LEFT}>
-            <NavbarHeading className="logo no-select">
+            <NavbarHeading className='logo no-select'>
               <Link
-                className="logo-link"
+                className='logo-link'
                 // replace={shouldReplaceHistory}
                 to={logoLink}
               >
