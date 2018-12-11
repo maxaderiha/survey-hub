@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import mongoose from 'mongoose';
 import passport from 'passport';
+import path from 'path';
 
 import { MONGO_DB_URI } from 'config';
 import 'models/User';
@@ -20,6 +21,13 @@ app.use(passport.session());
 
 authRoutes(app);
 paymentRoutes(app);
+
+if (process.env.NODE_ENV === 'production') {
+  const clientBuildDir = path.resolve(__dirname, '../../client/build');
+
+  app.use(express.static(clientBuildDir));
+  app.get('*', (req, res) => res.sendFile(path.resolve(clientBuildDir, 'index.html'))); 
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
