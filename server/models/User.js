@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const user = new Schema({
   googleId: String,
   credits: {
     type: Number,
@@ -11,4 +11,4 @@ const userSchema = new Schema({
   emails: [{ value: String }],
 });
 
-mongoose.model('users', userSchema);
+mongoose.model('users', user);

@@ -4,6 +4,6 @@ export function authCheck(req, res, next) {
   }
 
   return res.status(401).send({
-    message: 'Not Authenticated',
+    message: 'Not authenticated',
   });
 }

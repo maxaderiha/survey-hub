@@ -5,9 +5,11 @@ import passport from 'passport';
 import path from 'path';
 
 import { MONGO_DB_URI } from 'config';
+import 'models/Survey';
 import 'models/User';
 import authRoutes from 'routes/auth';
 import paymentRoutes from 'routes/payment';
+import surveysRoutes from 'routes/surveys';
 import cookieSession from 'services/cookieSession';
 import 'services/passport';
 
@@ -21,6 +23,7 @@ app.use(passport.session());
 
 authRoutes(app);
 paymentRoutes(app);
+surveysRoutes(app);
 
 if (process.env.NODE_ENV === 'production') {
   const clientBuildDir = path.resolve(__dirname, '../../client/build');

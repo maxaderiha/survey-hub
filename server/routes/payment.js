@@ -1,7 +1,7 @@
 import { Stripe } from 'stripe';
 
 import { STRIPE_SECRET_KEY } from 'config';
-import { authCheck } from 'middlewares/authCheck';
+import { authCheck } from 'middlewares';
 
 const stripe = Stripe(STRIPE_SECRET_KEY);
 
