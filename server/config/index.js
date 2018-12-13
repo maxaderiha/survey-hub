@@ -11,4 +11,5 @@ export const {
   MONGO_DB_URI,
   STRIPE_PUBLISHABLE_KEY,
   STRIPE_SECRET_KEY,
+  SEND_GRID_KEY,
 } = process.env;

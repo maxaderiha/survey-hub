@@ -1,0 +1,1 @@
+export { getSurveyTemplate } from './getSurveyTemplate';

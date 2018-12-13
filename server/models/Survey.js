@@ -8,9 +8,12 @@ const { Schema } = mongoose;
 const survey = new Schema({
   title: String,
   body: String,
-  emailSubject: String,
+  subject: String,
   recipients: [recipient],
-  feedback,
+  feedback: {
+    type: feedback,
+    default: feedback,
+  },
   sentDate: {
     type: Date,
     default: Date.now,

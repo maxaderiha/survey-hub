@@ -1,7 +1,5 @@
 import passport from 'passport';
 
-import { authCheck } from 'middlewares';
-
 export default app => {
   app.get(
     '/api/auth/google',
@@ -20,7 +18,7 @@ export default app => {
   });
 
   // for testing
-  app.get('/api/user', authCheck, (req, res) => {
+  app.get('/api/user', (req, res) => {
     res.send(req.user);
   });
 };
