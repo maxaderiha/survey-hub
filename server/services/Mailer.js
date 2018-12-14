@@ -54,5 +54,3 @@ export class Mailer extends Mail {
     return this.sgApi.API(request);
   }
 }
-
-export default Mailer;
