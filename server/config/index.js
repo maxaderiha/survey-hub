@@ -12,4 +12,5 @@ export const {
   STRIPE_PUBLISHABLE_KEY,
   STRIPE_SECRET_KEY,
   SEND_GRID_KEY,
+  REDIRECT_DOMAIN,
 } = process.env;

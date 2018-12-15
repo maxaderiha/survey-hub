@@ -8,14 +8,14 @@ const appInitialState = Immutable.Map({
 
 const appReducer = (state = appInitialState, action) => {
   switch (action.type) {
-    case ActionTypes.FETCH_USER: return fetchUser(state, action);
+    case ActionTypes.SET_USER_LOADING_STATE: return setUserLoadingState(state, action);
     case ActionTypes.UPDATE_USER: return updateUser(state, action);
     default: return state;
   }
 };
 
-function fetchUser(state, action) {
-  return state.set('isUserLoading', true);
+function setUserLoadingState(state, action) {
+  return state.set('isUserLoading', action.payload.isUserLoading);
 }
 
 function updateUser(state, action) {

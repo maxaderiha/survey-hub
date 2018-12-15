@@ -5,12 +5,11 @@ import { Route, Switch } from 'react-router-dom';
 
 import history from 'configureHistory';
 import { AppThemes } from 'common/constants';
+import Dashboard from 'containers/Dashboard';
 import Landing from 'components/Landing';
 import Header from 'containers/Header';
 import store from 'store';
 
-const SurveyNew = () => <div>SurveyNew</div>;
-const Dashboard = () => <div>Dashboard</div>;
 const Footer = () => <footer className="footer">Footer</footer>;
 
 class App extends React.PureComponent {
@@ -22,8 +21,7 @@ class App extends React.PureComponent {
             <Header />
             <Switch>
               <Route exact path="/" component={Landing} />
-              <Route exact path="/surveys" component={Dashboard} />
-              <Route path="/surveys/new" component={SurveyNew} />
+              <Route path="/surveys" component={Dashboard} />
             </Switch>
             {/* <Footer /> */}
           </div>

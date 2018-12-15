@@ -1,3 +1,5 @@
+import { REDIRECT_DOMAIN } from 'config';
+
 export const getSurveyTemplate = survey => {
   return (
     `<!doctype html>
@@ -388,9 +390,9 @@ export const getSurveyTemplate = survey => {
                                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                     <tbody>
                                       <tr>
-                                        <td> <a href="http://localhost:3000" target="_blank">Yes</a> </td>
+                                        <td> <a href="${REDIRECT_DOMAIN}/api/surveys/thank" target="_blank">Yes</a> </td>
                                         <td class="btn-divider"></td>
-                                        <td> <a href="http://localhost:3000" target="_blank">No</a> </td>
+                                        <td> <a href="${REDIRECT_DOMAIN}/api/surveys/thank" target="_blank">No</a> </td>
                                       </tr>
                                     </tbody>
                                   </table>

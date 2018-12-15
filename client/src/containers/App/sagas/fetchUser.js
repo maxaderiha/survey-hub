@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { call, put } from 'redux-saga/effects';
 
-import { updateUser } from 'containers/App/actions';
+import { updateUser, setUserLoadingState } from 'containers/App/actions';
 
 export function* fetchUser() {
   try {
+    yield put(setUserLoadingState(true));
+    
     const { data: user } = yield call(axios, '/api/user');
     
     yield put(updateUser(user));

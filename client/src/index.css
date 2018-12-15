@@ -15,8 +15,18 @@ body {
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  background-color: #293742;
+  align-items: center;
+  min-height: 100%;
+  padding-top: 50px;
+  background-color: #30404d;
+}
+
+.dashboard-container {
+  flex: 1 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .footer {
@@ -25,4 +35,10 @@ body {
 
 .no-select {
   user-select: none;
+}
+
+.non-decorated-link, .non-decorated-link:hover {
+  /* temporary approach */
+  color: inherit !important;
+  text-decoration: none;
 }

@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Alignment,
-  Button,
+  AnchorButton,
   Classes,
   Navbar,
   NavbarGroup,
   NavbarDivider,
-  NavbarHeading
+  NavbarHeading,
+  Spinner
 } from '@blueprintjs/core';
 
 import Payment from 'containers/Payment';
@@ -23,18 +24,18 @@ class Header extends React.Component {
   }
 
   render() {
-    const { user/*, location: { pathname }*/ } = this.props;
+    const { user, isUserLoading/*, location: { pathname }*/ } = this.props;
     const isLoggedIn = !!user;
     const logoLink = isLoggedIn ? '/surveys' : '/';
     // const shouldReplaceHistory = pathname === '/';
 
     return (
-      <Navbar>
+      <Navbar fixedToTop>
         <div className='navbar-wrapper'>
           <NavbarGroup align={Alignment.LEFT}>
             <NavbarHeading className='logo no-select'>
               <Link
-                className='logo-link'
+                className='non-decorated-link'
                 // replace={shouldReplaceHistory}
                 to={logoLink}
               >
@@ -43,7 +44,11 @@ class Header extends React.Component {
             </NavbarHeading>
           </NavbarGroup>
           <NavbarGroup align={Alignment.RIGHT}>
-            {this.renderButtons()}
+            {
+              isUserLoading
+                ? <Spinner className={'header-spinner'} size={25} />
+                : this.renderButtons()
+            }
           </NavbarGroup>
         </div>
       </Navbar>
@@ -51,7 +56,7 @@ class Header extends React.Component {
   }
 
   renderButtons = () => {
-    const { user, isUserLoading } = this.props;
+    const { user } = this.props;
     const isLoggedIn = !!user;
 
 
@@ -60,34 +65,24 @@ class Header extends React.Component {
         <React.Fragment>
           <Payment />
           <NavbarDivider />
-          <Button
+          <AnchorButton
             className={Classes.MINIMAL}
+            href={'/api/auth/logout'}
             icon={'log-out'}
             text={'Log Out'}
-            loading={isUserLoading}
-            onClick={this.logOut}
           />
         </React.Fragment>
       );
     } else {
       return (
-        <Button
+        <AnchorButton
           className={Classes.MINIMAL}
+          href={'/api/auth/google'}
           icon={'log-in'}
           text={'Log In with Google'}
-          loading={isUserLoading}
-          onClick={this.logIn}
         />
       );
     }
-  }
-
-  logIn = () => {
-    window.location.assign('/api/auth/google');
-  }
-
-  logOut = () => {
-    window.location.replace('/api/auth/logout');
   }
 }
 
