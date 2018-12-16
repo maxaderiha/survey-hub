@@ -1,4 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose, { set } from 'mongoose';
+import { Path } from 'path-parser';
+import { URL } from 'url';
 
 import { authCheck, creditsCheck } from 'middlewares';
 import { getSurveyTemplate } from 'services/emailTemplates';
@@ -21,13 +23,38 @@ export default app => {
     });
 
     const mailer = new Mailer(survey, getSurveyTemplate(survey));
-    await mailer.send();
-    await survey.save();
 
-    user.credits -= 1;
-    const updatedUser = await user.save();
+    try {
+      await mailer.send();
+      await survey.save();
 
-    res.send(updatedUser);
+      user.credits -= 1;
+      const updatedUser = await user.save();
+
+      res.send(updatedUser);
+    } catch (error) {
+      res.status(422).send(error);
+    }
+  });
+
+  app.post('/api/surveys/webhooks', (req, res) => {
+    const pairs = new Set();
+    const transformer = ({ email, url }) => {
+      const { pathname } = new URL(url);
+      const match =  new Path('/api/surveys/:surveyId/:choice').test(pathname);
+
+      if (match) return { email, ...match };
+    };
+    const predicate = ({ email, surveyId }) => {
+      const pair = `${email}${surveyId}`;
+
+      return pairs.has(pair) ? false : pairs.add(pair);
+    };
+
+    const uniqEvents = Object.values(req.body)
+      .map(transformer)
+      .filter(Boolean)
+      .filter(predicate);
   });
 
   app.get('/api/surveys/thank', (req, res) => {
