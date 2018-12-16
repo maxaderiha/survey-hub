@@ -390,9 +390,9 @@ export const getSurveyTemplate = survey => {
                                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                     <tbody>
                                       <tr>
-                                        <td> <a href="${REDIRECT_DOMAIN}/api/surveys/${survey.id}/yes" target="_blank">Yes</a> </td>
+                                        <td> <a href="${REDIRECT_DOMAIN}/api/surveys/answer/${survey.id}/yes" target="_blank">Yes</a> </td>
                                         <td class="btn-divider"></td>
-                                        <td> <a href="${REDIRECT_DOMAIN}/api/surveys/${survey.id}/no" target="_blank">No</a> </td>
+                                        <td> <a href="${REDIRECT_DOMAIN}/api/surveys/answer/${survey.id}/no" target="_blank">No</a> </td>
                                       </tr>
                                     </tbody>
                                   </table>

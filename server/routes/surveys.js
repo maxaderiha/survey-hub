@@ -9,6 +9,20 @@ import { Mailer } from 'services/Mailer';
 const Survey = mongoose.model('surveys');
 
 export default app => {
+  app.get('/api/surveys', authCheck, async (req, res) => {
+    const {
+      skip = 0,
+      limit = 5,
+    } = req.query;
+
+    const surveys = await Survey.find({ _user: req.user.id })
+      .select({ recipients: false })
+      .skip(+skip)
+      .limit(+limit);
+    
+    res.send(surveys);
+  });
+
   app.post('/api/surveys', authCheck, creditsCheck, async (req, res) => {
     const { user } = req;
     const { title, subject, body, recipientEmails } = req.body;
@@ -89,7 +103,7 @@ export default app => {
       .forEach(findAndUpdate);
   });
 
-  app.get('/api/surveys/thank', (req, res) => {
+  app.get('/api/surveys/answer/*', (req, res) => {
     res.send('Thanks for the answer!');
   });
 };
