@@ -19,6 +19,7 @@
         "alias": {
         }
       }
-    ]
+    ],
+    "transform-object-rest-spread"
   ]
 }

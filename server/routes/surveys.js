@@ -1,4 +1,4 @@
-import mongoose, { set } from 'mongoose';
+import mongoose from 'mongoose';
 import { Path } from 'path-parser';
 import { URL } from 'url';
 
@@ -39,22 +39,54 @@ export default app => {
 
   app.post('/api/surveys/webhooks', (req, res) => {
     const pairs = new Set();
-    const transformer = ({ email, url }) => {
-      const { pathname } = new URL(url);
-      const match =  new Path('/api/surveys/:surveyId/:choice').test(pathname);
 
-      if (match) return { email, ...match };
+    const converter = ({ email, url }) => {
+      const { pathname } = new URL(url);
+      const match = new Path('/api/surveys/:surveyId/:choice').test(pathname);
+
+      if (match) {
+        return {
+          email,
+          ...match,
+        };
+      }
     };
+
     const predicate = ({ email, surveyId }) => {
       const pair = `${email}${surveyId}`;
 
       return pairs.has(pair) ? false : pairs.add(pair);
     };
 
-    const uniqEvents = Object.values(req.body)
-      .map(transformer)
+    const findAndUpdate = ({ surveyId, email, choice }) => Survey.updateOne(
+      {
+        _id: surveyId,
+        recipients: {
+          $elemMatch: {
+            email,
+            responded: false,
+          },
+        },
+        feedback: {
+          $exists: true,
+        },
+      },
+      {
+        $inc: {
+          [`feedback.${choice}`]: 1,
+        },
+        $set: {
+          'recipients.$.responded': true,
+          'lastRespondDate': Date.now(),
+        },
+      },
+    ).exec();
+
+    Object.values(req.body)
+      .map(converter)
       .filter(Boolean)
-      .filter(predicate);
+      .filter(predicate)
+      .forEach(findAndUpdate);
   });
 
   app.get('/api/surveys/thank', (req, res) => {
