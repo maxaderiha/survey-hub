@@ -7,9 +7,7 @@ import path from 'path';
 import { MONGO_DB_URI } from 'config';
 import 'models/Survey';
 import 'models/User';
-import authRoutes from 'routes/auth';
-import paymentRoutes from 'routes/payment';
-import surveysRoutes from 'routes/surveys';
+import routes from 'routes';
 import cookieSession from 'services/cookieSession';
 import 'services/passport';
 
@@ -21,9 +19,7 @@ app.use(cookieSession);
 app.use(passport.initialize());
 app.use(passport.session());
 
-authRoutes(app);
-paymentRoutes(app);
-surveysRoutes(app);
+app.use('/api', routes);
 
 if (process.env.NODE_ENV === 'production') {
   const clientBuildDir = path.resolve(__dirname, '../../client/build');

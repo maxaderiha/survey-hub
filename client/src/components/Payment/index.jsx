@@ -1,8 +1,7 @@
+import { Button, Classes } from '@blueprintjs/core';
+import { Payment } from 'common/constants';
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import { Button, Classes } from '@blueprintjs/core';
-
-import { Payment } from 'common/constants';
 
 export default class TakeMoney extends React.Component {
   render() {

@@ -1,0 +1,17 @@
+.survey-card {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.survey-card-right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.curvey-card-tag {
+  margin-left: 10px; 
+}

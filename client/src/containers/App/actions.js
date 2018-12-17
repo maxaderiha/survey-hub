@@ -1,18 +1,11 @@
 import { ActionTypes } from './constants';
 
 export const fetchUser = () => ({
-  type: ActionTypes.FETCH_USER,
+  type: ActionTypes.FETCH_USER_REQUEST,
 });
 
-export const setUserLoadingState = isUserLoading => ({
-  type: ActionTypes.SET_USER_LOADING_STATE,
-  payload: {
-    isUserLoading,
-  },
-});
-
-export const updateUser = user => ({
-  type: ActionTypes.UPDATE_USER,
+export const fetchUserSuccess = user => ({
+  type: ActionTypes.FETCH_USER_SUCCESS,
   payload: {
     user,
   },

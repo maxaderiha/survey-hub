@@ -10,8 +10,6 @@ import Landing from 'components/Landing';
 import Header from 'containers/Header';
 import store from 'store';
 
-const Footer = () => <footer className="footer">Footer</footer>;
-
 class App extends React.PureComponent {
   render() {
     return (

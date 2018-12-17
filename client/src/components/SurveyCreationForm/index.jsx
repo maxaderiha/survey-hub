@@ -1,6 +1,6 @@
+import { Button, EditableText, H1, H3, Label, Spinner } from '@blueprintjs/core';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Label, Button, EditableText, H1, H3, Spinner } from '@blueprintjs/core';
 
 import './styles.css';
 
@@ -16,11 +16,9 @@ class SurveyCreationForm extends Component {
   render() {
     const { isLoading } = this.state;
 
-    return (
-      isLoading
-        ? <Spinner size={75} />
-        : this.renderForm()
-    );
+    return isLoading
+      ? <Spinner size={75} />
+      : this.renderForm();
   }
 
   renderForm = () => (
@@ -55,7 +53,7 @@ class SurveyCreationForm extends Component {
           <H3>
             <EditableText
               className={'survey-form-field'}
-              placeholder="Edit email body... (multiline)"
+              placeholder="Your question for users..."
               maxLines={12}
               minLines={2}
               maxLength={200}

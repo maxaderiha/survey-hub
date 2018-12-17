@@ -9,11 +9,3 @@ export const user = createSelector(
 export const isUserLoading = createSelector(
   [app], app => app.get('isUserLoading'),
 );
-
-export const isLoggedIn = createSelector(
-  [user], user => !!user,
-);
-
-export const credits = createSelector(
-  [user], user => user.get('credits'),
-);
