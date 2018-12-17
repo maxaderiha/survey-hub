@@ -57,7 +57,7 @@ router.post('/webhooks', (req, res) => {
 
   const converter = ({ email, url }) => {
     const { pathname } = new URL(url);
-    const match = new Path('/api/surveys/:surveyId/:choice').test(pathname);
+    const match = new Path('/api/surveys/answer/:surveyId/:choice').test(pathname);
 
     if (match) {
       return {
