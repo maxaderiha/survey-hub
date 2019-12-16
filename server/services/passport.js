@@ -21,6 +21,7 @@ passport.use(
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: '/api/auth/google/callback',
+      userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
       proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
