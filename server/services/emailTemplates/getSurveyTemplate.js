@@ -381,7 +381,7 @@ export const getSurveyTemplate = survey => {
                       <tr>
                         <td>
                           <h3 class="email-title">${survey.title}</h3>
-                          <p class="email-body">Please answer the following questions:</p>
+                          <p class="email-body">Please answer the following question:</p>
                           <p class="email-body">${survey.body}</p>
                           <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                             <tbody>
